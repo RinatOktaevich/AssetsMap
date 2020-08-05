@@ -1,0 +1,52 @@
+header {
+    background: #424242;
+    .header-body {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        padding: 5px 5px 8px 5px;
+        .dots {
+            display: flex;
+            position: absolute;
+            left: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-left: 10px;
+            &__dot {
+                background-color: #636363;
+                border-radius: 50%;
+                width: 10px;
+                height: 10px;
+                &:not(:last-child) {
+                    margin-right: 5px;
+                }
+            }
+        }
+        .title {
+            text-align: center;
+            color: #CDCDCD;
+            width: 100px;
+            font-size: small;
+        }
+    }
+}
+
+.body-grid {
+    display: grid;
+    grid-template-columns: auto 300px;
+    grid-template-rows: auto 300px ;
+
+    .title{
+        font-size: 20px;
+        padding: 0 0 0 0;
+    }
+
+    .search{
+        height: 20px;
+        
+    }
+
+    .it {
+        border: dashed gray 1px;
+    }
+}

@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+// @import "./resetStyles.css";
+@import "../node_modules/reset-css/sass/reset";
+//declaring content width
+.content {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+  }
