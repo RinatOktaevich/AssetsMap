@@ -34,7 +34,7 @@ header {
 .body-grid {
     display: grid;
     grid-template-columns: auto 300px;
-    grid-template-rows: auto 300px ;
+    grid-template-rows: auto auto ;
 
     .title{
         font-size: 20px;
