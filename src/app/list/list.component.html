@@ -1,0 +1,10 @@
+<div class="list">
+    <div *ngFor="let item of list" class="list__item">
+        <div class="item__title">{{item.name}}</div>
+        <div (click)="deleteItem($event)" class="item__button">
+        </div>
+    </div>
+
+
+
+</div>

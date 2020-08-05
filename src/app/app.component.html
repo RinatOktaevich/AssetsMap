@@ -1,25 +1,36 @@
 <header>
-  <div class="content">
-      <div class="header-body">
-          <div class="dots">
-              <span class="dots__dot"></span>
-              <span class="dots__dot"></span>
-              <span class="dots__dot"></span>
-          </div>
-          <div class="title">{{title}}</div>
-      </div>
-  </div>
-</header>
-<body>
-  <div class="content">
-    <div class="body-grid">
-      <div class="it title">Assets Map</div>
-      <div class="it">
-        <div class="search">Haha</div>
-      </div>
-      <div class="it"> <app-map></app-map> </div>
-      <div class="it">444444</div>
-
+    <div class="content">
+        <div class="header-body">
+            <div class="dots">
+                <span class="dots__dot"></span>
+                <span class="dots__dot"></span>
+                <span class="dots__dot"></span>
+            </div>
+            <div class="title">{{title}}</div>
+        </div>
     </div>
-  </div>
+</header>
+
+<body>
+    <div class="content">
+        <div class="grid">
+            <div class="grid__item title">Assets Map</div>
+            <div class="grid__item search">
+                <div class="search">Haha</div>
+            </div>
+            <div class="grid__item map">
+                <div class="borderBlock">
+                    <div class="item__header">Map</div>
+                    <app-map></app-map>
+                </div>
+            </div>
+            <div class="grid__item list">
+                <div class="borderBlock">
+                    <div class="item__header">Assets</div>
+                    <app-list></app-list>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </body>

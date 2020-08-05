@@ -1,0 +1,75 @@
+.list {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    @media (max-width: 800px) {
+        height: 100%;
+    }
+    &__item {
+        height: 38px;
+        padding: 0px 9px 0px 21px;
+        border-bottom: solid #EEEEEE 1px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .item__button {
+            border: solid red 0px;
+            border-radius: 0px;
+            background: url("../../assets/images/close.png");
+            background-size: contain;
+            display: inline-block;
+            height: 15px;
+            width: 15px;
+            transition: border 0.1s, height 0.05s, width 0.05s; //background-size 0.2s;
+            &:hover {
+                border: solid red 2px;
+                border-radius: 15px;
+                background-size: 2px;
+                animation: button 0.5s;
+            }
+            &:active {
+                border: solid red 7px;
+                height: 4px;
+                width: 4px;
+            }
+            @keyframes button {
+                0% {
+                    border: solid rgb(255, 187, 187) 0px;
+                    background-size: 12px;
+                }
+                20% {
+                    border: solid rgb(248, 126, 126) 1.2px;
+                    background-size: 8px;
+                }
+                40% {
+                    border-radius: 5px;
+                    background-size: 7px;
+                }
+                60% {
+                    border: solid rgba(255, 53, 53, 0.815) 1.5px;
+                    border-radius: 7px;
+                    background-size: 5px;
+                }
+                100% {
+                    border: solid red 2px;
+                    border-radius: 15px;
+                    background-size: 2px;
+                }
+            }
+        }
+    }
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ffffff;
+    border: solid rgb(168, 164, 164) 1px;
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+    // border: solid rgb(168, 164, 164) 1px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #CCCCCC;
+}

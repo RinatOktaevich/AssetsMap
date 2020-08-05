@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
-import { GoogleMapsModule} from '@angular/google-maps'
+import { GoogleMapsModule} from '@angular/google-maps';
+import { ListComponent } from './list/list.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    MapComponent
+    MapComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
