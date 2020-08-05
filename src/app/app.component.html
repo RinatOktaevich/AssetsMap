@@ -16,7 +16,7 @@
         <div class="grid">
             <div class="grid__item title">Assets Map</div>
             <div class="grid__item search">
-                <div class="search">Haha</div>
+              <input placeholder="Search asset" [(ngModel)]="searchInput" />
             </div>
             <div class="grid__item map">
                 <div class="borderBlock">
@@ -27,7 +27,7 @@
             <div class="grid__item list">
                 <div class="borderBlock">
                     <div class="item__header">Assets</div>
-                    <app-list></app-list>
+                    <app-list [filterValue]="searchInput"  ></app-list>
                 </div>
             </div>
 
