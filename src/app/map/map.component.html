@@ -1,1 +1,11 @@
-<google-map width="100%"></google-map>
+<google-map width="100%" [center]="center" [options]="options" [zoom]="zoom">
+
+    <map-marker
+    #markerElem
+    *ngFor="let marker of markers"
+    [position]="marker.position"
+    [title]="marker.title"
+    [options]="marker.options"
+  >
+  </map-marker>
+</google-map>
