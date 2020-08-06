@@ -1,0 +1,44 @@
+.modal {
+    width: 310px;
+    height: 137px;
+    &-header {
+        height: 20px;
+        background-color: #EEEEEE;
+        font-size: 12px;
+        padding: 11px 0px 0 10px;
+        border-radius: 5px 5px;
+        font-family: sans-serif;
+    }
+    &-body {
+        padding: 14px 10px 0px 17px;
+        &__message {
+            height: 50px;
+            font-size: 14px;
+            color: #161616;
+            font-family: sans-serif bold;
+        }
+        &-buttons {
+            button {
+                float: right;
+                font-size: 15px;
+                width: 90px;
+                height: 30px;
+                color: white;
+                border: 0px;
+                margin-left: 10px;
+                outline: none;
+                &.cancel {
+                    border-radius: 5px;
+                    background-color: #EDAD4F;
+                }
+                &.delete {
+                    border-radius: 5px;
+                    background-color: #D8544F;
+                }
+                &:active {
+                    transform: scale(0.9);
+                }
+            }
+        }
+    }
+}

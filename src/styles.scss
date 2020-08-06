@@ -33,6 +33,13 @@ $AssetsMap-theme: mat-light-theme((
 // that you are using.
 @include angular-material-theme($AssetsMap-theme);
 
+//custom style form modal dialogs
+.custom-dialog-container .mat-dialog-container {
+  padding: 0;
+  border: solid black 1px;
+  border-radius: 10px;
+}
+
 /* You can add global styles to this file, and also import other style files */
 // @import "./resetStyles.css";
 @import "../node_modules/reset-css/sass/reset";

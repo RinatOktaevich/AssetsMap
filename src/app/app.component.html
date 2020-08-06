@@ -17,6 +17,7 @@
             <div class="grid__item title">Assets Map</div>
             <div class="grid__item search">
               <input placeholder="Search asset" [(ngModel)]="searchInput" />
+              <button  (click)="AddAssetDialog()" >Add Asset</button >
             </div>
             <div class="grid__item map">
                 <div class="borderBlock">
@@ -27,7 +28,7 @@
             <div class="grid__item list">
                 <div class="borderBlock">
                     <div class="item__header">Assets</div>
-                    <app-list [filterValue]="searchInput"  ></app-list>
+                    <app-list (assetDeletedEvent)="deleteAsset($event)" [filterValue]="searchInput"  ></app-list>
                 </div>
             </div>
 

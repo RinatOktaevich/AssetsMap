@@ -1,7 +1,7 @@
 <div class="list">
 
     <div class="plainList" *ngIf="!filteredList.length && !noItemsFound">
-        <div *ngFor="let item of list" class="list__item">
+        <div *ngFor="let item of list async" class="list__item">
             <div class="item__title">{{item.name}}</div>
             <div (click)="openDialog(item)" class="item__deleteButton">
             </div>
@@ -10,7 +10,7 @@
 
 
     <div class="filteredList" *ngIf="filteredList && filteredList.length">
-        <div *ngFor="let item of filteredList" class="list__item">
+        <div *ngFor="let item of filteredList async" class="list__item">
             <div class="item__title">{{item.name}}</div>
             <div (click)="openDialog(item)" class="item__deleteButton">
             </div>
@@ -18,6 +18,6 @@
     </div>
 
     <div class="list__item" *ngIf="noItemsFound">
-        <div class="item__title">No marker was found</div>
+        <div class="item__title">No assets was found</div>
     </div>
 </div>

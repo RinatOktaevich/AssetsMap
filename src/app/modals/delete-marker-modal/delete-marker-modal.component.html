@@ -1,2 +1,21 @@
-<p>delete-marker-modal works!</p>
-<div mat-dialog-title class="">{{data.name}}</div>
+<!-- <p>delete-marker-modal works!</p>
+<div mat-dialog-title class="">{{data.name}}</div> -->
+
+<!-- 
+<button (click)="onNoClick()">No</button>
+
+<button [mat-dialog-close]="data" cdkFocusInitial>Ok</button> -->
+
+
+<div class="modal">
+    <div class="modal-header">
+        <b> Warning </b>
+    </div>
+    <div class="modal-body">
+        <div class="modal-body__message">Are you sure you want to delete truck {{data.name}} ?</div>
+        <div class="modal-body-buttons">
+            <button class="delete" [mat-dialog-close]="data">Delete</button>
+            <button class="cancel" (click)="onNoClick()" cdkFocusInitial>Cancel</button>
+        </div>
+    </div>
+</div>

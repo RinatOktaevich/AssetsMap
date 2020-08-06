@@ -1,1 +1,51 @@
-<p>create-marker-modal works!</p>
+<!-- <h1 mat-dialog-title>Add new asset</h1>
+
+
+<form mat-dialog-content [formGroup]="assetsForm">
+    <div class="form-row">
+        <span class="form-row-label">Name</span>
+        <input type="text" formControlName="name" class="form-row-control">
+    </div>
+    <div class="form-row">
+        <span class="form-row-label">Latitude</span>
+        <input type="number" class="form-row-control" formControlName="latitude" />
+    </div>
+    <div class="form-row">
+        <span class="form-row-label">Longitude</span>
+        <input type="number" class="form-row-control" formControlName="longitude" />
+    </div>
+</form>
+
+
+<button (click)="No()">No Thanks</button>
+<button [mat-dialog-close]="getFormValue()" [disabled]="!assetsForm.valid">Ok</button>
+ -->
+
+
+<div class="modal">
+    <div class="modal-header">
+        <div class="">Add new asset</div>
+    </div>
+    <div class="modal-body">
+        <form action="" [formGroup]="assetsForm">
+            <div class="form-row">
+                <div class="form-row__label">Name</div>
+                <input type="text" class="form-row__input" formControlName="name" />
+            </div>
+
+            <div class="form-row">
+                <div class="form-row__label">Latitude</div>
+                <input type="number" class="form-row__input" formControlName="latitude" />
+            </div>
+
+            <div class="form-row">
+                <div class="form-row__label">Longitude</div>
+                <input type="number" class="form-row__input" formControlName="longitude" />
+            </div>
+        </form>
+        <div class="modal-body-buttons">
+            <button class="add" [mat-dialog-close]="getFormValue()" [disabled]="!assetsForm.valid" [ngClass]="{'inValid':!assetsForm.valid}">Add</button>
+            <button class="cancel" (click)="No()" >Cancel</button>
+        </div>
+    </div>
+</div>

@@ -52,6 +52,17 @@ header {
             padding: 6px 0px 6px 8px;
             border: solid #c2bfbf 1px;
             border-radius: 6px;
+            width: 155px;
+        }
+        button {
+            border: solid #c2bfbf 1px;
+            color: white;
+            font-size: 15px;
+            background-color: #5DB75E;
+            font-family: sans-serif;
+            padding: 5px 12px;
+            border-radius: 7px;
+            margin-left: 18px;
         }
     }
     .map {
