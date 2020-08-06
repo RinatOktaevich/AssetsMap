@@ -1,5 +1,7 @@
 import { Component, OnInit, OnChanges, Input, SimpleChange } from '@angular/core';
 import { IPoint } from "../types/IPoint";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DeleteMarkerModalComponent } from '../modals/delete-marker-modal/delete-marker-modal.component';
 
 @Component({
   selector: 'app-list',
@@ -7,13 +9,28 @@ import { IPoint } from "../types/IPoint";
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   @Input() filterValue: string = "";
 
   list: IPoint[] = [];
   filteredList: IPoint[] = [];
   noItemsFound: boolean = false;
+
+
+  openDialog(point: IPoint): void {
+    const dialogRef = this.dialog.open(DeleteMarkerModalComponent, {
+      width: '250px',
+      data: point
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      let ret = result;
+    });
+  }
+
+
 
 
   ngOnInit(): void {
