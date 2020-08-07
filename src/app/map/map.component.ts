@@ -21,49 +21,22 @@ export class MapComponent implements OnInit, OnChanges {
 
   @Input() createdAsset: IAsset = null;
   @Input() deletedAsset: IAsset = null;
-
-
-
+  @Input() selectedAsset: IAsset = null;
 
   markers: IMarker[] = [];
 
 
   ngOnInit(): void {
-    // let mk = new google.maps.Marker({
-    //   position:,
-    //   title:,
-    // });
+    this.center = new google.maps.LatLng(43.736004, -79.453579);
+    this.zoom = 7;
 
-
-    navigator.geolocation.getCurrentPosition(position => {
-
-      this.center = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-      let marker = {
-        position: {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        },
-        title: "You are here",
-        label: "Hey)"
-      };
-
-      this.markers.push(marker);
-
-      this.zoom = 10;
-
-    }, err => {
-
-      this.center = new google.maps.LatLng(43.736004, -79.453579);
-      this.zoom = 7;
-    })
   }
 
   ngOnChanges(change: any) {
 
     let newAsset: IAsset = change.createdAsset?.currentValue;
     let deletedAsset: IAsset = change.deletedAsset?.currentValue;
-
+    let selectAsset: IAsset = change.selectedAsset?.currentValue;
 
     if (newAsset != undefined && newAsset != null) {
       this.AddMarker(newAsset);
@@ -74,6 +47,10 @@ export class MapComponent implements OnInit, OnChanges {
       // this.PointMarkerOnMap(newAsset.point);
       this.DeleteMarker(deletedAsset);
     }
+    if (selectAsset != undefined && selectAsset != null) {
+      this.PointMarkerOnMap(selectAsset.point);
+    }
+
   }
 
 

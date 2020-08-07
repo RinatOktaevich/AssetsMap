@@ -8,13 +8,15 @@ import { DeleteMarkerModalComponent } from '../modals/delete-marker-modal/delete
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit,OnChanges {
+export class ListComponent implements OnInit, OnChanges {
   constructor(public dialog: MatDialog) { }
 
   @Input() searchRequest: string = "";
-  @Input() createdAsset: IAsset=null;
+  @Input() createdAsset: IAsset = null;
 
   @Output() assetDeletedEvent: EventEmitter<IAsset> = new EventEmitter<IAsset>();
+  @Output() assetSelectedEvent: EventEmitter<IAsset> = new EventEmitter<IAsset>();
+
 
   list: IAsset[] = [];
   filteredList: IAsset[] = [];
@@ -41,6 +43,10 @@ export class ListComponent implements OnInit,OnChanges {
   spliceAsset(asset: IAsset) {
     let index = this.list.findIndex((val, index) => { if (val.id == asset.id) return true; });
     this.list.splice(index, 1);
+  }
+
+  itemSelected(item: IAsset) {
+    this.assetSelectedEvent.emit(item);
   }
 
 

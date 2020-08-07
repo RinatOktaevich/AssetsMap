@@ -22,13 +22,13 @@
             <div class="grid__item map">
                 <div class="borderBlock">
                     <div class="item__header">Map</div>
-                    <app-map [createdAsset]="newCreatedAsset"  [deletedAsset]="deletingAsset"></app-map>
+                    <app-map [createdAsset]="newCreatedAsset"  [deletedAsset]="deletingAsset" [selectedAsset]="selectedAsset" ></app-map>
                 </div>
             </div>
             <div class="grid__item list">
                 <div class="borderBlock">
                     <div class="item__header">Assets</div>
-                    <app-list (assetDeletedEvent)="deleteAsset($event)" [searchRequest]="assetSearchRequest" [createdAsset]="newCreatedAsset"  ></app-list>
+                    <app-list (assetDeletedEvent)="deleteAsset($event)" (assetSelectedEvent)="selectAsset($event)" [searchRequest]="assetSearchRequest" [createdAsset]="newCreatedAsset"  ></app-list>
                 </div>
             </div>
 
