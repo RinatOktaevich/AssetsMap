@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { IAsset } from '../types/IAsset';
+import { IMarker } from "../types/IMarker";
 
 
 
@@ -7,54 +9,94 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, OnChanges {
   constructor() { }
-
   zoom = 8;
-  center: google.maps.LatLng = new google.maps.LatLng(0, 0);
+  center: google.maps.LatLng | google.maps.LatLngLiteral;// = new google.maps.LatLng(0, 0);
   options: google.maps.MapOptions = {
     center: this.center,
     zoom: 5,
     disableDefaultUI: true
   };
 
-  markers: Array<google.maps.Marker>;
+  @Input() createdAsset: IAsset = null;
+  @Input() deletedAsset: IAsset = null;
+
+
+
+
+  markers: IMarker[] = [];
 
 
   ngOnInit(): void {
+    // let mk = new google.maps.Marker({
+    //   position:,
+    //   title:,
+    // });
+
+
     navigator.geolocation.getCurrentPosition(position => {
-      // this.center = {
-      //   lat: position.coords.latitude,
-      //   lng: position.coords.longitude
-      // };
+
       this.center = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+      let marker = {
+        position: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        },
+        title: "You are here",
+        label: "Hey)"
+      };
+
+      this.markers.push(marker);
 
       this.zoom = 10;
 
     }, err => {
-      // this.center = {
-      //   lat: 43.736004,
-      //   lng: -79.453579
-      // };
-      this.center = new google.maps.LatLng(43.736004, -79.453579);
 
+      this.center = new google.maps.LatLng(43.736004, -79.453579);
       this.zoom = 7;
     })
   }
 
+  ngOnChanges(change: any) {
+
+    let newAsset: IAsset = change.createdAsset?.currentValue;
+    let deletedAsset: IAsset = change.deletedAsset?.currentValue;
 
 
-  AddMarker(marker: google.maps.Marker) {
+    if (newAsset != undefined && newAsset != null) {
+      this.AddMarker(newAsset);
+      this.PointMarkerOnMap(newAsset.point);
+    }
+    if (deletedAsset != undefined && deletedAsset != null) {
+      // this.AddMarker(newAsset);
+      // this.PointMarkerOnMap(newAsset.point);
+      this.DeleteMarker(deletedAsset);
+    }
+  }
+
+
+  AddMarker(asset: IAsset) {
+    let marker = {
+      position: asset.point,
+      title: asset.name,
+      label: asset.name
+    };
     this.markers.push(marker);
   }
 
-  DeleteMarker(marker: google.maps.Marker) {
-    let indexToDelete = this.markers.indexOf(marker);
+  DeleteMarker(asset: IAsset) {
+    let indexToDelete = this.markers.findIndex((value, index) => {
+      if (value.label == asset.name) {
+        return true;
+      }
+    });
     this.markers.splice(indexToDelete, 1);
   }
 
-  PointMarkerOnMap(marker: google.maps.Marker) {
-    this.center = marker.getPosition();
+  PointMarkerOnMap(position: google.maps.LatLngLiteral) {
+    this.center = position;
   }
 
 

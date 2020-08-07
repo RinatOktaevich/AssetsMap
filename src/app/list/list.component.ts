@@ -8,10 +8,12 @@ import { DeleteMarkerModalComponent } from '../modals/delete-marker-modal/delete
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit,OnChanges {
   constructor(public dialog: MatDialog) { }
 
-  @Input() filterValue: string = "";
+  @Input() searchRequest: string = "";
+  @Input() createdAsset: IAsset=null;
+
   @Output() assetDeletedEvent: EventEmitter<IAsset> = new EventEmitter<IAsset>();
 
   list: IAsset[] = [];
@@ -44,57 +46,58 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let asset: IAsset = {
-      id: 0,
-      name: "asas",
-      point: {
-        lat: 51.508742,
-        lng: -0.120850
-      }
-    };
+    // let asset: IAsset = {
+    //   id: 0,
+    //   name: "asas",
+    //   point: {
+    //     lat: 51.508742,
+    //     lng: -0.120850
+    //   }
+    // };
 
-    this.list = [
-      {
-        id: 1,
-        name: "saas",
-        point: {
-          lat: 51.508742,
-          lng: -0.120850
-        }
-      }, {
-        id: 2,
-        name: "mokas",
-        point: {
-          lat: 51.508742,
-          lng: -0.120850
-        }
-      }, {
-        id: 3,
-        name: "lorem",
-        point: {
-          lat: 51.508742,
-          lng: -0.120850
-        }
-      },
-      {
-        id: 4,
-        name: "kaberne",
-        point: {
-          lat: 51.508742,
-          lng: -0.120850
-        }
-      }
-    ];
+    // this.list = [
+    //   {
+    //     id: 1,
+    //     name: "saas",
+    //     point: {
+    //       lat: 51.508742,
+    //       lng: -0.120850
+    //     }
+    //   }, {
+    //     id: 2,
+    //     name: "mokas",
+    //     point: {
+    //       lat: 51.508742,
+    //       lng: -0.120850
+    //     }
+    //   }, {
+    //     id: 3,
+    //     name: "lorem",
+    //     point: {
+    //       lat: 51.508742,
+    //       lng: -0.120850
+    //     }
+    //   },
+    //   {
+    //     id: 4,
+    //     name: "kaberne",
+    //     point: {
+    //       lat: 51.508742,
+    //       lng: -0.120850
+    //     }
+    //   }
+    // ];
 
-    for (let index = 5; index < 30; index++) {
-      asset.id = index;
-      this.list.push(asset);
-    }
+    // for (let index = 5; index < 30; index++) {
+    //   asset.id = index;
+    //   this.list.push(asset);
+    // }
 
   }
 
   ngOnChanges(change: any): void {
-    let filter = change.filterValue.currentValue;
+    let filter = change.searchRequest?.currentValue;
+    let newAsset = change.createdAsset?.currentValue;
 
     if (filter != undefined && filter.length > 0) {
       this.noItemsFound = false;
@@ -117,5 +120,15 @@ export class ListComponent implements OnInit {
       this.noItemsFound = false;
     }
 
+    if (newAsset != undefined && newAsset != null) {
+      this.addAsset(newAsset);
+    }
+
+
+  }
+
+
+  addAsset(asset: IAsset) {
+    this.list.push(asset);
   }
 }

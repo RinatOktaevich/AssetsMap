@@ -12,9 +12,12 @@ import { IAsset } from './types/IAsset';
 export class AppComponent {
   constructor(public dialog: MatDialog) { }
 
+  idCounter: number = 0;
+
   title = "Site Title";
-  searchInput: string;
-  newAsset: IAsset;
+  assetSearchRequest: string;
+  newCreatedAsset: IAsset;
+  deletingAsset:IAsset;
 
   AddAssetDialog() {
     const dialogRef = this.dialog.open(CreateMarkerModalComponent, {
@@ -25,13 +28,15 @@ export class AppComponent {
 
     dialogRef.afterClosed().subscribe((asset: IAsset) => {
       if (asset != undefined) {
-        console.debug(asset);
+        asset.id = this.idCounter++;
+        this.newCreatedAsset = asset;
+        
       }
     });
   }
 
   deleteAsset(event: IAsset) {
-    let sd = event;
+    this.deletingAsset=event;
   }
 
 }

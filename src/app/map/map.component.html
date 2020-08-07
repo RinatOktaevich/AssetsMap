@@ -1,11 +1,10 @@
 <google-map width="100%" [center]="center" [options]="options" [zoom]="zoom">
 
     <map-marker
-    #markerElem
-    *ngFor="let marker of markers"
-    [position]="marker.position"
-    [title]="marker.title"
-    [options]="marker.options"
-  >
-  </map-marker>
+     *ngFor="let marker of markers async" 
+     [position]="marker.position" 
+     [title]="marker.title"
+     [label]="marker.label"
+     >
+    </map-marker>
 </google-map>
