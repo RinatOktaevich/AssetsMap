@@ -1,8 +1,8 @@
 <div class="list">
 
     <div class="plainList" *ngIf="!filteredList.length && !noItemsFound">
-        <div *ngFor="let item of list async" (click)="itemSelected(item)" class="list__item">
-            <div class="item__title">{{item.name}}</div>
+        <div *ngFor="let item of list async" class="list__item">
+            <div class="item__title" (click)="itemSelected(item)">{{item.name}}</div>
             <div (click)="openDialog(item)" class="item__deleteButton">
             </div>
         </div>

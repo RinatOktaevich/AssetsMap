@@ -12,7 +12,7 @@ import { IMarker } from "../types/IMarker";
 export class MapComponent implements OnInit, OnChanges {
   constructor() { }
   zoom = 8;
-  center: google.maps.LatLng | google.maps.LatLngLiteral;// = new google.maps.LatLng(0, 0);
+  center: google.maps.LatLng | google.maps.LatLngLiteral;
   options: google.maps.MapOptions = {
     center: this.center,
     zoom: 5,
@@ -43,8 +43,6 @@ export class MapComponent implements OnInit, OnChanges {
       this.PointMarkerOnMap(newAsset.point);
     }
     if (deletedAsset != undefined && deletedAsset != null) {
-      // this.AddMarker(newAsset);
-      // this.PointMarkerOnMap(newAsset.point);
       this.DeleteMarker(deletedAsset);
     }
     if (selectAsset != undefined && selectAsset != null) {
@@ -73,7 +71,10 @@ export class MapComponent implements OnInit, OnChanges {
   }
 
   PointMarkerOnMap(position: google.maps.LatLngLiteral) {
-    this.center = position;
+    this.center = {
+      lat: position.lat,
+      lng: position.lng
+    };
   }
 
 

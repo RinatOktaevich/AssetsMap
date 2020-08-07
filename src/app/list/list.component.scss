@@ -14,14 +14,13 @@
         justify-content: space-between;
         align-items: center;
         .item__deleteButton {
-            border: solid  0px;
+            border: solid 0px;
             border-radius: 0px;
             background: url("../../assets/images/close.png");
             background-size: contain;
             display: inline-block;
             height: 15px;
             width: 15px;
-            // transition: border 0.1s, height 0.05s, width 0.05s; 
             &:hover {
                 border: solid red 2px;
                 height: 14px;
@@ -31,7 +30,7 @@
                 animation: button 0.5s;
             }
             &:active {
-               transform: scale(0.7);
+                transform: scale(0.7);
             }
             @keyframes button {
                 0% {
@@ -60,6 +59,15 @@
                 }
             }
         }
+        .item__title {
+            width: 128px;
+            padding: 5px 10px 4px;
+            border-radius: 3px;
+            border: solid gray 1px;
+            &:hover {
+                border: solid rgb(236, 95, 95) 1px;
+            }
+        }
     }
 }
 
@@ -70,7 +78,6 @@
 
 ::-webkit-scrollbar {
     width: 20px;
-    // border: solid rgb(168, 164, 164) 1px;
 }
 
 ::-webkit-scrollbar-thumb {

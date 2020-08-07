@@ -8,7 +8,7 @@ import { DeleteMarkerModalComponent } from '../modals/delete-marker-modal/delete
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit, OnChanges {
+export class ListComponent implements OnChanges {
   constructor(public dialog: MatDialog) { }
 
   @Input() searchRequest: string = "";
@@ -46,59 +46,8 @@ export class ListComponent implements OnInit, OnChanges {
   }
 
   itemSelected(item: IAsset) {
+    console.debug("${item.name} selected");
     this.assetSelectedEvent.emit(item);
-  }
-
-
-  ngOnInit(): void {
-
-    // let asset: IAsset = {
-    //   id: 0,
-    //   name: "asas",
-    //   point: {
-    //     lat: 51.508742,
-    //     lng: -0.120850
-    //   }
-    // };
-
-    // this.list = [
-    //   {
-    //     id: 1,
-    //     name: "saas",
-    //     point: {
-    //       lat: 51.508742,
-    //       lng: -0.120850
-    //     }
-    //   }, {
-    //     id: 2,
-    //     name: "mokas",
-    //     point: {
-    //       lat: 51.508742,
-    //       lng: -0.120850
-    //     }
-    //   }, {
-    //     id: 3,
-    //     name: "lorem",
-    //     point: {
-    //       lat: 51.508742,
-    //       lng: -0.120850
-    //     }
-    //   },
-    //   {
-    //     id: 4,
-    //     name: "kaberne",
-    //     point: {
-    //       lat: 51.508742,
-    //       lng: -0.120850
-    //     }
-    //   }
-    // ];
-
-    // for (let index = 5; index < 30; index++) {
-    //   asset.id = index;
-    //   this.list.push(asset);
-    // }
-
   }
 
   ngOnChanges(change: any): void {
