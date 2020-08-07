@@ -68,6 +68,11 @@
                 &.add {
                     border-radius: 5px;
                     background-color: #60B55F;
+
+                    &.inValid{
+                    background-color: #9ac499;
+                    color:#ffffffa6;
+                    }
                 }
             }
         }
